@@ -13,6 +13,11 @@ Player::Player()
 Player::~Player()
 {
 	delete _board;
+	
+	if (_opponent)
+	_opponent->RemoveOpponent();
+	
+	delete _opponent;
 }
 
 void Player::PlaceShips(std::vector<Ship*> ships)
@@ -47,6 +52,7 @@ void Player::PlaceShips(std::vector<Ship*> ships)
 
 		system("cls");
 		shipPlaced = false;
+
 	}
 
 	_board->DrawGrid();
@@ -57,4 +63,25 @@ void Player::PlaceShips(std::vector<Ship*> ships)
 bool Player::PlaceShip(const Position position, Ship* ship, int orientation)
 {
 	return _board->PlaceShipIfPossible(position, ship, orientation);
+}
+
+void Player::SetOpponent(PlayerObserver* opponent)
+{
+	_opponent = opponent;
+}
+
+void Player::RemoveOpponent()
+{
+	_opponent = nullptr;
+}
+
+void Player::NotifyShot(const Position position)
+{
+	_opponent->OnNotify(position);
+}
+
+HitType Player::OnNotify(const Position position)
+{
+	// ici on va regarder si l'adversaire à touché quelque chose.
+	return HitType::MISS;
 }

@@ -30,6 +30,8 @@ void Board::DrawGrid()
 
 		std::cout << "\n";
 	}
+
+	std::cout << "\n";
 }
 
 void Board::AddShip(Ship* ship)
