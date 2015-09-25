@@ -7,11 +7,10 @@ class Ship
 {
 private:
 	
-	// rend inaccessible le constructeur par defaut, par copie et l'operateur d'assignation.
-	
+	// rend inaccessible le constructeur par defaut, par copie et l'operateur d'assignation.	
 	Ship(){};
 	Ship(const Ship&) = delete;
-	Ship& operator=(const Ship& position) = delete;
+	Ship& operator=(const Ship& ship) = delete;
 
 	Position* _position;
 	int _length;
@@ -29,6 +28,11 @@ public:
 	}
 
 	bool CanShotAtPosition(Position position);
+	
+	int GetLength() const
+	{
+		return _length;
+	}
 };
 
 #endif
