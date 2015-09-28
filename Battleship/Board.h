@@ -31,7 +31,9 @@ private:
 
 	Board(){};
 	Board(const Board&) = delete;
+	
 	Board& operator=(const Board& position) = delete;
+	
 	bool PlaceShipIfEnoughSpace(const Position position, Ship* ship, int orientation);
 	void AddShip(Ship* ship);
 

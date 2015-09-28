@@ -1,20 +1,34 @@
 #include "Player.h"
 #include "Ship.h"
 #include <vector>
+#include <memory>
+#include "BattleshipGame.h"
+
 //#include <iostream>
 //#include <sstream>
 //#include <string>
 
 int main()
 {
-	Player* player = new Player();
+	BattleshipGame* game = new BattleshipGame();
+	game->Start();
+	game->Run();
+
+	
+	/*Va etre utilisé pour rendre le code plus sécuritaire.*/
+	//std::shared_ptr<BattleshipGame> g(new BattleshipGame);
+
+	
+
+	
+	/*Player* player = new Player();
 
 	std::vector<Ship*> ships;
 
 	ships.push_back(new Ship(1, 1));
 	ships.push_back(new Ship(2, 1));
 
-	player->PlaceShips(ships);
+	player->PlaceShips(ships);*/
 
 	/*int nb = ships.size();
 	
@@ -44,3 +58,4 @@ int main()
 
 	return 0;
 }
+

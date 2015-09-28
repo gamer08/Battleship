@@ -54,10 +54,6 @@ void Player::PlaceShips(std::vector<Ship*> ships)
 		shipPlaced = false;
 
 	}
-
-	_board->DrawGrid();
-
-	system("pause");
 }
 
 bool Player::PlaceShip(const Position position, Ship* ship, int orientation)
@@ -84,4 +80,9 @@ HitType Player::OnNotify(const Position position)
 {
 	// ici on va regarder si l'adversaire à touché quelque chose.
 	return HitType::MISS;
+}
+
+void Player::DrawBoard()
+{
+	_board->DrawGrid();
 }

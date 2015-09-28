@@ -23,6 +23,7 @@ public:
 
 	bool PlaceShip(const Position position, Ship* ship, int orientation);
 	void PlaceShips(std::vector<Ship*> ships);
+	void DrawBoard();
 
 	void SetOpponent(PlayerObserver* opponent);
 	void RemoveOpponent();
