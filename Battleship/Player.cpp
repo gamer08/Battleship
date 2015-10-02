@@ -31,7 +31,7 @@ void Player::PlaceShips(std::vector<Ship*> ships)
 	{	
 		while (!shipPlaced)
 		{
-			std::cout << "Enter position and orientation for ship " << (index + 1) << " in the for of A2 0" << "\n";
+			std::cout << "Enter position and orientation for ship " << (index + 1) << " in the form of A2 0" << "\n";
 			std::getline(std::cin, input);
 
 			std::istringstream inputStream(input);
@@ -55,6 +55,79 @@ void Player::PlaceShips(std::vector<Ship*> ships)
 
 	}
 }
+
+void Player::Attack()
+{
+	std::string input;
+	Position attackPosition = Position(0, 0);
+	bool isAttackValid = false;
+
+	while (!isAttackValid)
+	{
+		std::cout << "Enter Ship # and Position for attack in the form of 0 A2" << "\n";
+		std::getline(std::cin, input);
+
+		std::istringstream inputStream(input);
+			
+		std::string shipNumber;
+		inputStream >> shipNumber;
+
+		int sNumber = atoi((shipNumber).c_str());
+		
+		std::string positionInput;
+		inputStream >> positionInput;
+
+		Position position = _board->ParsePositionFromInput(positionInput);
+
+		if (position._x != -1 && (position._y >= 0))
+			isAttackValid = _board->AttackWithShipIfPossible(sNumber, position);
+
+		if (isAttackValid)
+			attackPosition = position;
+	}
+
+	system("cls");
+
+	//On va envoyer un message à l'autre joueur
+	//NotifyShot(attackPosition);
+}
+
+void Player::MoveShip()
+{
+	std::string input;
+	bool isMoveValid = false;
+
+	while (!isMoveValid)
+	{
+		std::cout << "Enter Ship # and Move in the form of 0 -1" << "\n" 
+			      << "Enter nothing if do not want to move a Ship" << "\n" ;
+
+		std::getline(std::cin, input);
+
+		std::istringstream inputStream(input);
+			
+		std::string shipNumber;
+		inputStream >> shipNumber;
+
+		if (!shipNumber.empty())
+		{
+			int sNumber = atoi((shipNumber).c_str());
+
+			std::string moveInput;
+			inputStream >> moveInput;
+
+			int move = atoi((moveInput).c_str());
+
+			if (move >= -2 && move <= 2)
+				isMoveValid = _board->MoveShipIfPossible(sNumber, move);
+		}
+		else
+			isMoveValid = true;
+	}
+
+	system("cls");
+}
+
 
 bool Player::PlaceShip(const Position position, Ship* ship, int orientation)
 {

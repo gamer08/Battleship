@@ -28,7 +28,7 @@ void BattleshipGame::SetNewState(State* state)
 void BattleshipGame::Start()
 {
 	_players.push_back(new Player());
-	/*_players.push_back(new Player());*/
+	//_players.push_back(new Player());
 
 	_currentState = State::NewDefaultState(this);
 	_currentState->Enter();

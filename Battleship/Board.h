@@ -26,8 +26,7 @@ private:
 	int _order;
 	Cell** _grid;
 	
-	// Je ne suis pas encore décidé si je vais l'utiliser
-	//std::vector<Ship*> _ships;
+	std::vector<Ship*> _ships;
 
 	Board(){};
 	Board(const Board&) = delete;
@@ -43,7 +42,10 @@ public:
 	~Board();
 	void DrawGrid();
 	bool PlaceShipIfPossible(const Position position, Ship* ship, int orientation);
+	bool AttackWithShipIfPossible(int shipNumber, const Position position);
+	bool MoveShipIfPossible(int shipNumber, int move);
 	Position ParsePositionFromInput(std::string input);
+
 };
 
 #endif 

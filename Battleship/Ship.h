@@ -15,6 +15,8 @@ private:
 	Position* _position;
 	int _length;
 	int _fireRange;
+	bool _isSink;
+	int _orientation;
 
 public:
 
@@ -27,12 +29,34 @@ public:
 		_position->_y = newPosition._y;
 	}
 
-	bool CanShotAtPosition(Position position);
-	
+	Position GetPosition() const
+	{
+		return *_position;
+	}
+
+	void SetOrientation(int orientation)
+	{
+		_orientation = orientation;
+	}
+
+	int GetOrientation() const
+	{
+		return _orientation;
+	}
+
 	int GetLength() const
 	{
 		return _length;
 	}
+
+	bool IsSink() const
+	{
+		return _isSink;
+	}
+	
+	bool CanAttackAtPosition(Position position);
+	void MoveAtPosition(Position newPosition);
+
 };
 
 #endif

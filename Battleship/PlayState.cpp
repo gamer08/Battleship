@@ -21,6 +21,18 @@ void PlayState::Execute()
 {
 	system("cls");
 	_players[0]->DrawBoard();
+	
+	// Tests de range et de déplacement
+
+	////_players[0]->Attack();
+	//_players[0]->DrawBoard();
+	//system("pause");
+	//system("cls");
+	//_players[0]->MoveShip();
+	//system("cls");
+	///*_players[0]->DrawBoard();
+	//system("pause");*/
+	
 }
 
 void PlayState::Exit()

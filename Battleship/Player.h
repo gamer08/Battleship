@@ -7,7 +7,7 @@
 
 class Ship; //déclaration avancée pour eviter une redondance cyclique;
 
-class Player : PlayerObserver
+class Player : public PlayerObserver
 {
 private:
 	Player(const Player&) = delete;
@@ -24,6 +24,8 @@ public:
 	bool PlaceShip(const Position position, Ship* ship, int orientation);
 	void PlaceShips(std::vector<Ship*> ships);
 	void DrawBoard();
+	void Attack();
+	void MoveShip();
 
 	void SetOpponent(PlayerObserver* opponent);
 	void RemoveOpponent();
